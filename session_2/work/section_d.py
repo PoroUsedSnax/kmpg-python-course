@@ -1,4 +1,4 @@
-from random import randint
+from random import randint, choice
 from math import floor
 
 i = 0
@@ -31,4 +31,34 @@ while i < 4:
         input("Password failure, try again: ")
         i += 1
     
+userInput = None
+aiInput = None
+plays = 0
+score = []
 
+while plays < 3:
+    userInput = input("Rock, Paper or Scissors?: ")
+    aiInput = choice(["Rock", "Paper", "Scissors"])
+    plays += 1
+    if "Rock" in userInput:
+        if "Rock" in aiInput:
+            score.append("Draw")
+        elif "Paper" in aiInput:
+            score.append("Loss")
+        else:
+            score.append("Win")
+    elif "Paper" in userInput:
+        if "Rock" in aiInput:
+            score.append("Win")
+        elif "Paper" in aiInput:
+            score.append("Draw")
+        else:
+            score.append("Loss")
+    else:
+        if "Rock" in aiInput:
+            score.append("Loss")
+        elif "Paper" in aiInput:
+            score.append("Win")
+        else:
+            score.append("Draw")
+print(score)
