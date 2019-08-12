@@ -40,25 +40,22 @@ while plays < 3:
     userInput = input("Rock, Paper or Scissors?: ")
     aiInput = choice(["Rock", "Paper", "Scissors"])
     plays += 1
-    if "Rock" in userInput:
-        if "Rock" in aiInput:
-            score.append("Draw")
-        elif "Paper" in aiInput:
-            score.append("Loss")
-        else:
-            score.append("Win")
-    elif "Paper" in userInput:
-        if "Rock" in aiInput:
-            score.append("Win")
-        elif "Paper" in aiInput:
-            score.append("Draw")
-        else:
-            score.append("Loss")
-    else:
-        if "Rock" in aiInput:
-            score.append("Loss")
-        elif "Paper" in aiInput:
-            score.append("Win")
-        else:
-            score.append("Draw")
+    scoreType = {
+        "Rock": {
+            "Rock": "Draw",
+            "Paper": "Loss",
+            "Scissors": "Win"
+        },
+        "Paper": {
+            "Rock": "Win",
+            "Paper": "Draw",
+            "Scissors": "Loss"
+        },
+        "Scissors": {
+            "Rock": "Loss",
+            "Paper": "Win",
+            "Scissors": "Draw"
+        }
+    }
+    score.append(scoreType[userInput][aiInput])
 print(score)
